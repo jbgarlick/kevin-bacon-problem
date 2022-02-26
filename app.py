@@ -87,7 +87,9 @@ class MovieGraph:
         # plt.show()
         fig, ax = plt.subplots()
         ax.hist(values, bins=[i-.5 for i in range(8)])
-        ax.set_title('Average path lengths of every actor to ' + str(target))
+        ax.set_title('Average score of every actor to ' + str(target))
+        ax.set_ylabel('Number of Actors')
+        ax.set_xlabel('# of Movies Away from Actor')
         # Return the average path length from all actors to the target actor
         return fig, sum(values)/len(values)
 
@@ -104,9 +106,9 @@ st.write('Have you ever heard about the six degrees of Kevin Bacon?')
 st.write('Basically, the idea is that every actor in hollywood is typically connected to Kevin Bacon by 6 movies or less.')
 st.write('Think of it like this: ')
 st.markdown('Kevin Bacon was in _Patriots Day (2016)_')
-st.markdown('Mark Falvo was also in _Patriots Day_, and was also in _Captain America: Civil War (2016)_.')
+st.markdown('Mark Falvo was also in _Patriots Day_, and was in _Captain America: Civil War (2016)_')
 st.markdown('Tom Holland was in _Captain America: Civil War_.')
-st.write('So, Kevin Bacon and Tom Holland are just one actor away from each other, giving Tom Holland a Bacon Score of 2')
+st.write('So, Kevin Bacon and Tom Holland are just one actor away from each other, giving Tom Holland a score of 2')
 st.write('Try it yourself! Click the button below to select randomly or type in two actors\' names and see how they\'re connected.')
 
 obj = MovieGraph('movie_data_small.txt')
@@ -121,27 +123,30 @@ with col2:
     actor2 = st.text_input('Input another actor: ')
 
 button1 = st.button('Run')
-st.markdown('_Running the algorithm might take a minute._')
-
+st.write('If an error occurs, make sure the names are spelled correctly.')
 
 if button1:
-    path, score = obj.path_to_actor(actor1, actor2)
-    st.write(path)
-    st.write("Score: ", score)
-    st.write("Shortly, two graphs will appear showing the distribution of scores for the selected actors.")
-    st.write("Basically, this shows how many actors are in the same movies, two movies away, etc.")
-    col1, col2 = st.columns(2)
+    if actor1 == '' or actor2 == '':
+        st.write('Select two actors.')
+    else:
+        path, score = obj.path_to_actor(actor1, actor2)
+        st.write(path)
+        st.write("Score: ", score)
+        st.write("Shortly, two graphs will appear showing the distribution of scores for the selected actors.")
+        st.write("A score of 1 means that two actors are in the same movie. 2 means that one actor connects them, and so on.")
+        col1, col2 = st.columns(2)
 
-    with col1:
-        fig, average = obj.average_number(actor1)
-        st.pyplot(fig)
-        st.text('Average score: ' + str(average))
+        with col1:
+            fig, average = obj.average_number(actor1)
+            st.pyplot(fig)
+            st.text('Average score: ' + str(average))
 
-    with col2:
-        fig2, average2 = obj.average_number(actor2)
-        st.pyplot(fig2)
-        st.text('Average score: ' + str(average2))
-    
+        with col2:
+            fig2, average2 = obj.average_number(actor2)
+            st.pyplot(fig2)
+            st.text('Average score: ' + str(average2))
+
+
 if button2:
     actor1 = np.random.choice(list(actor_list), 1)[0]
     actor2 = np.random.choice(list(actor_list), 1)[0]
@@ -150,17 +155,18 @@ if button2:
     st.write(path)
     st.write("Score: ", score)
     st.write("Shortly, two graphs will appear showing the distribution of scores for the selected actors.")
-    st.write("Basically, this shows how many actors are in the same movies, two movies away, etc.")
-
+    st.write("A score of 1 means that two actors are in the same movie, 2 means that one actor connects them, etc.")
     col1, col2 = st.columns(2)
 
     with col1:
         fig, average = obj.average_number(actor1)
         st.pyplot(fig)
+        st.text('Average score: ' + str(average))
 
     with col2:
         fig, average = obj.average_number(actor2)
         st.pyplot(fig)
+        st.text('Average score: ' + str(average))
 
 
 
