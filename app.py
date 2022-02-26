@@ -1,7 +1,7 @@
 import networkx as nx
 from matplotlib import pyplot as plt
 import streamlit as st
-import random
+from random import choice
 
 class MovieGraph:
     """Class for solving the Kevin Bacon problem with movie data from IMDb."""
@@ -143,8 +143,8 @@ if button1:
         st.text('Average score: ' + str(average2))
     
 if button2:
-    actor1 = random.choice(list(actor_list))
-    actor2 = random.choice(list(actor_list))
+    actor1 = choice(list(actor_list))
+    actor2 = choice(list(actor_list))
     path, score = obj.path_to_actor(actor1, actor2)
     st.write('Actors selected: ' + str(actor1) + " & " + str(actor2))
     st.write(path)
