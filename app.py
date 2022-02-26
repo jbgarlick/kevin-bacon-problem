@@ -108,7 +108,7 @@ st.write('Think of it like this: ')
 st.markdown('Kevin Bacon was in _Patriots Day (2016)_')
 st.markdown('Mark Falvo was also in _Patriots Day_, and was in _Captain America: Civil War (2016)_')
 st.markdown('Tom Holland was in _Captain America: Civil War_.')
-st.write('So, Kevin Bacon and Tom Holland are just one actor away from each other, giving Tom Holland a score of 2')
+st.write('So, Kevin Bacon and Tom Holland are just one actor away from each other, giving Tom Holland a score of 2 (or two degrees of separation)')
 st.write('Try it yourself! Click the button below to select randomly or type in two actors\' names and see how they\'re connected.')
 
 obj = MovieGraph('movie_data_small.txt')
