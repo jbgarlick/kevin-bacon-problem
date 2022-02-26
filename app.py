@@ -170,3 +170,10 @@ if button2:
 
 
 
+
+st.text('Created by Jared Garlick')
+st.text('LinkedIn: https://www.linkedin.com/in/jaredgarlick/')
+st.text('Github: https://github.com/jbgarlick')
+
+
+
