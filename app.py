@@ -170,10 +170,14 @@ if button2:
 
 
 
-
+st.write('')
+st.write('')
+st.write('')
+st.write('')
+st.write('')
 st.text('Created by Jared Garlick')
-st.text('LinkedIn: https://www.linkedin.com/in/jaredgarlick/')
-st.text('Github: https://github.com/jbgarlick')
+st.markdown('LinkedIn: [https://www.linkedin.com/in/jaredgarlick/]')
+st.markdown('Github: [https://github.com/jbgarlick]')
 
 
 
