@@ -1,2 +1,2 @@
 # kevin-bacon-problem
-Select any two actors and see how connected they are.
+Select any two actors and see what movies and actors connect them.
