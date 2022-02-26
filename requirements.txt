@@ -1,6 +1,4 @@
-queue
 networkx
 matplotlib
 streamlit
-plotly.express
 random
