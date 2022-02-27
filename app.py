@@ -176,8 +176,8 @@ st.write('')
 st.write('')
 st.write('')
 st.text('Created by Jared Garlick')
+st.markdown('[jaredgarlick.com]')
 st.markdown('LinkedIn: [https://www.linkedin.com/in/jaredgarlick/]')
 st.markdown('Github: [https://github.com/jbgarlick]')
-
 
 
